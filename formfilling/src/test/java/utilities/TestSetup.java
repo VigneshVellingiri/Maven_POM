@@ -1,11 +1,16 @@
 package utilities;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.Properties;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class TestSetup {
 	public static WebDriver driver;
+	public static Properties prop;
 	
 	public static void getBrowser(String Browser) {
 		if(Browser.equalsIgnoreCase("chrome")) {
@@ -19,6 +24,21 @@ public class TestSetup {
 			driver.manage().window().maximize();
 		}
 		
+	}
+	
+	static {
+		try {
+			File f = new File("C:\\Users\\vigne\\git\\Maven_POM\\formfilling\\src\\test\\java\\Input.properties");
+			FileInputStream soure = new FileInputStream(f);
+			
+			prop = new Properties();
+			prop.load(soure);
+			
+		}
+		catch(Exception e){
+			
+			
+		}
 	}
 
 }
